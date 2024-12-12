@@ -209,8 +209,17 @@ python webui.py
 - 模型微调：对税务数据使用Lora技术对ChatGLM-3进行SFT微调，增强其对税务查询的专业性和准确性。
 - RAG架构设计：结合多路径检索技术，采用BM25与Faiss向量搜索，利用bge-rerank-large模型优化结果排序，确保高相关性返回。
 - 查询优化：通过Query Rewrite与HyDE技术对用户查询进行预处理，提升检索效果。
+- 服务拆分与模块化：基于Tornado框架将索引查询与 LLM 响应拆分为两个子服务，增强系统的模块化和可操作性。
 - Prompt工程：使用COT、TOT、Few-shot、Step Back等提示词工程来设计prompt生成问题的任务列表和任务序号，利用大语言模型多次循环调用生成能力，以处理复杂和多样化的用户提问。
 - RouterChain及Agent调用:基于Qwen2使用LLMRouterChain进行用户的意图识别分析和路由选择，基于魔搭Agent进行工具的调用和定义，提升用户体验与交互效率。
-服务拆分与模块化：基于Tornado框架将索引查询与 LLM 响应拆分为两个子服务，增强系统的模块化和可操作性。
+- 系统评估:检索系统评估采用 MRR、Hit Rate 和 NDCG 指标，生成环节评测使用 Rouge-L 和 BLEU-4 等量化指标进行分析。
+# 后续优化方向
+- 结合知识图谱（Knowledge Graph, KG）来进一步优化RAG（Retrieval-Augmented Generation）的检索系统，知识图谱能够为RAG提供结构化、关联性强的知识支持，从而提高生成模型的准确性、可控性和推理能力。
+- 在Agent中引入REACT思想，REACT是一种多步骤推理框架，常用于增强模型对于复杂问题进行的多轮交互的Agent的推理能力。它的全称是“Reasoning, Acting, and Communicating Thoughtfully”。在REACT框架中，模型通过系统化的步骤进行推理（Reasoning），然后采取行动（Acting）并在沟通过程中精细化这些步骤。这种框架强调模型如何清晰地表达自己的推理过程，并逐步增强回答的完整性和准确性。
+- 考虑使用更高效的代理框架Plan-Execute Agent，规划模块(Planning Module)负责接收输入问题或任务，并生成一个解决问题所需的行动计划。这个计划通常是一系列逻辑步骤或子任务的序列。执行模块(Execution Module)按照规划模块生成的计划逐步执行每个子任务。这可能涉及到调用外部API、查询数据库、运行其他代理等操作。通过结构化的方法来构建能够处理复杂任务的智能代理。
+# 致谢
+### 核心贡献者
+- 康鸿-项目负责人(河北科技大学-算法工程师)
+- 靳国伟-项目负责人(河北科技大学-算法工程师)
 # 参考文献
 [https://mp.weixin.qq.com/s/RONG0mK07ZHrQZ5mgr31cg](#aaa)
